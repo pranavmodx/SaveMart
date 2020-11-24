@@ -1,7 +1,7 @@
 import psycopg2
 
 db = psycopg2.connect(
-    host='localhost',
+    host='db',
     user='admin',
     password='admin123',
     database='savemart',
@@ -10,7 +10,7 @@ db = psycopg2.connect(
 cursor = db.cursor()
 
 
-def add_shop_data(file):
+def load_shop_data(file):
     with open(file, 'r') as f:
         try:
             cmd = f"""
@@ -25,5 +25,4 @@ def add_shop_data(file):
 
 
 if __name__ == "__main__":
-    add_shop_data('../data/shop_data.csv')
-
+    load_shop_data('./data/shop_data.csv')

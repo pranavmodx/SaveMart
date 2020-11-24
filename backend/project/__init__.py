@@ -1,46 +1,50 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from geoalchemy2 import Geometry, func
 
 app = Flask(__name__)
+app.config.from_object("project.config.Config")
+
 db = SQLAlchemy()
-
-# @app.route("/")
-# def home():
-#     return "Hello, World!"
+db.init_app(app)
 
 
-class Shops(db.Model):
+@app.route("/")
+def hello_world():
+    return jsonify(hello="world")
+
+
+class Shop(db.Model):
     __tablename__ = "Shops"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     shop_name = db.Column(db.String(100))
+    address = db.Column(db.String(200))
+    owner = db.Column(db.String(100))
+    phone_no = db.Column(db.Float)
     longitude = db.Column(db.Float)
     latitude = db.Column(db.Float)
     geo = db.Column(Geometry(geometry_type="POINT"))
-    address = db.Column(db.String(200))
-    ph_no = db.Column(db.Float)
-    owner = db.Column(db.String(100))
 
     def __repr__(self):
-        return "<Shops {name} ({lat}, {lon})>".format(
+        return "<Shop {name} ({lat}, {lon})>".format(
             name=self.shop_name, lat=self.latitude, lon=self.longitude)
 
-    def get_shops_within_radius(self, radius):
+    def get_shop_within_radius(self, radius):
         """Return all cities within a given radius (in meters) of this city."""
 
-        return Shops.query.filter(func.ST_DistanceSphere(Shops.geo, self.geo) < radius).all()
+        return Shop.query.filter(func.ST_DistanceSphere(Shop.geo, self.geo) < radius).all()
 
     @classmethod
     def add_shop(cls, shop_name, address, longitude, latitude):
         """Put a new city in the database."""
 
         geo = 'POINT({} {})'.format(longitude, latitude)
-        shop = Shops(shop_name=shop_name,
-                     address=address,
-                     longitude=longitude,
-                     latitude=latitude,
-                     geo=geo)
+        shop = Shop(shop_name=shop_name,
+                    address=address,
+                    longitude=longitude,
+                    latitude=latitude,
+                    geo=geo)
 
         db.session.add(shop)
         db.session.commit()
@@ -49,26 +53,21 @@ class Shops(db.Model):
     def update_geometries(cls):
         """Using each city's longitude and latitude, add geometry data to db."""
 
-        shops = Shops.query.all()
+        shop = Shop.query.all()
 
-        for shop in shops:
+        for shop in shop:
             point = 'POINT({} {})'.format(shop.longitude, shop.latitude)
             shop.geo = point
 
         db.session.commit()
 
 
-def connect_to_db(app):
-    URI = 'postgres://admin:admin123@localhost:5432/savemart'
-    app.config['SQLALCHEMY_DATABASE_URI'] = URI
-    app.config['SQLALCHEMY_ECHO'] = False
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    db.app = app
-    db.init_app(app)
+class Product(db.Model):
+    __tablename__ = "Products"
 
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    product_name = db.Column(db.String(100))
+    p_type = db.Column(db.String(100))
+    description = db.Column(db.String(100))
+	
 
-if __name__ == "__main__":
-    connect_to_db(app)
-    db.create_all()
-    print("Connected to database.")
-    # app.run(debug=True)
