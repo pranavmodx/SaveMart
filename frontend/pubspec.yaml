@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   page_transition: '^1.0.9'
   smooth_star_rating: '1.0.2'
+  flappy_search_bar: 1.4.1
+  geolocator: ^5.0.1
 
   cupertino_icons: ^0.1.3
 

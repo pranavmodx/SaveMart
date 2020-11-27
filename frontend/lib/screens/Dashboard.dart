@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../shared/location.dart';
+import '../shared/search_bar.dart';
 import '../shared/styles.dart';
 import '../shared/colors.dart';
 import '../shared/savemart_icons.dart';
@@ -25,7 +27,7 @@ class _DashboardState extends State<Dashboard> {
       Text('Tab2'),
       Text('Tab3'),
       Text('Tab4'),
-      Text('Tab5'),
+      Location(),
     ];
 
     return Scaffold(
@@ -44,7 +46,16 @@ class _DashboardState extends State<Dashboard> {
           actions: <Widget>[
             IconButton(
               padding: EdgeInsets.all(0),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return new Search();
+                    },
+                  ),
+                );
+              },
               iconSize: 21,
               icon: Icon(Fryo.magnifier),
             ),
@@ -66,7 +77,7 @@ class _DashboardState extends State<Dashboard> {
                   style: tabLinkStyle,
                 )),
             BottomNavigationBarItem(
-                icon: Icon(Fryo.cart),
+                icon: Icon(Fryo.plus_circle),
                 title: Text(
                   'My Cart',
                   style: tabLinkStyle,

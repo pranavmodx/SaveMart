@@ -24,9 +24,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -65,25 +67,33 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="604" y="137" width="424" height="479" key="FileChooserDialogImpl/0.0.1280.800@0.0.1280.800" timestamp="1605588306846" />
-    <state width="875" height="184" key="GridCell.Tab.0.bottom" timestamp="1605630348058">
+    <state width="865" height="94" key="GridCell.Tab.0.bottom" timestamp="1606137514951">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="875" height="184" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1605630348058" />
-    <state width="875" height="184" key="GridCell.Tab.0.center" timestamp="1605630348058">
+    <state width="865" height="94" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1606137514951" />
+    <state width="865" height="94" key="GridCell.Tab.0.center" timestamp="1606137514945">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="875" height="184" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1605630348058" />
-    <state width="875" height="184" key="GridCell.Tab.0.left" timestamp="1605630348058">
+    <state width="865" height="94" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1606137514945" />
+    <state width="865" height="94" key="GridCell.Tab.0.left" timestamp="1606137514945">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="875" height="184" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1605630348058" />
-    <state width="875" height="184" key="GridCell.Tab.0.right" timestamp="1605630348058">
+    <state width="865" height="94" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1606137514945" />
+    <state width="865" height="94" key="GridCell.Tab.0.right" timestamp="1606137514947">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="875" height="184" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1605630348058" />
+    <state width="865" height="94" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1606137514947" />
+    <state x="164" y="19" key="SettingsEditor" timestamp="1606128359408">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="164" y="19" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1606128359408" />
     <state x="762" y="160" width="387" height="433" key="chooseDestDirectoryDialog" timestamp="1605588987601">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="762" y="160" width="387" height="433" key="chooseDestDirectoryDialog/0.0.1280.800@0.0.1280.800" timestamp="1605588987601" />
+    <state x="463" y="51" width="697" height="604" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1606123148844">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="463" y="51" width="697" height="604" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1280.800@0.0.1280.800" timestamp="1606123148844" />
   </component>
 </project>
