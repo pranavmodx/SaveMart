@@ -14,7 +14,7 @@ def add_shop_data(file):
     with open(file, 'r') as f:
         try:
             cmd = f"""
-                        COPY "Shop" (shop_name, longitude, latitude, address) 
+                        COPY "savemart_shop" (name, longitude, latitude, address) 
                         FROM STDIN WITH (FORMAT CSV, HEADER TRUE);
                     """
             cursor.copy_expert(cmd, f)
