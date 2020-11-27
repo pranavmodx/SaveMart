@@ -71,35 +71,25 @@ class _DashboardState extends State<Dashboard> {
         bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(Fryo.shop),
-                title: Text(
-                  'Store',
-                  style: tabLinkStyle,
-                )),
+              icon: Icon(Fryo.shop),
+              label: 'Store',
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Fryo.plus_circle),
-                title: Text(
-                  'My Cart',
-                  style: tabLinkStyle,
-                )),
+              icon: Icon(Fryo.plus_circle),
+              label: 'Add Product',
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Fryo.heart_1),
-                title: Text(
-                  'Favourites',
-                  style: tabLinkStyle,
-                )),
+              icon: Icon(Fryo.cart),
+              label: 'My Cart',
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Fryo.user_1),
-                title: Text(
-                  'Profile',
-                  style: tabLinkStyle,
-                )),
+              icon: Icon(Fryo.user_1),
+              label: 'Profile',
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Fryo.cog_1),
-                title: Text(
-                  'Settings',
-                  style: tabLinkStyle,
-                ))
+              icon: Icon(Fryo.cog_1),
+              label: 'Settings',
+            )
           ],
           currentIndex: _selectedIndex,
           type: BottomNavigationBarType.fixed,
