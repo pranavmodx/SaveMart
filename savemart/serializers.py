@@ -1,10 +1,11 @@
 from rest_framework import serializers
 
 from .models import (
-	Shop, 
-	Product, 
-	ProductShop,
+    Shop,
+    Product,
+    ProductShop,
 )
+
 
 class ShopSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,10 +13,10 @@ class ShopSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# class ProductSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Product
-#         fields = '__all__'
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
 
 
 class ProductShopSerializer(serializers.ModelSerializer):
