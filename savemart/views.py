@@ -19,7 +19,7 @@ from .serializers import (
 )
 
 
-class ShopApi(viewsets.ViewSet):
+class ShopViewSet(viewsets.ViewSet):
     permission_classes = (AllowAny, )
 
     def retrieve(self, request, pk):
@@ -61,10 +61,6 @@ class ShopApi(viewsets.ViewSet):
         return Response(response)
 
 
-class ProductShopApi(APIView):
-    permission_classes = (AllowAny, )
-
-    def get(self, request):
-        queryset = ProductShop.objects.all()
-        serializer = ProductShopSerializer(queryset, many=True)
-        return Response(serializer.data)
+class ProductModelViewset(viewsets.ModelViewSet):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()

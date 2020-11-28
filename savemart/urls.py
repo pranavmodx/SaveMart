@@ -1,9 +1,10 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-from .views import ShopApi, ProductShopApi
+from .views import ShopViewSet, ProductModelViewset
 
 router = DefaultRouter()
-router.register('shops', ShopApi, basename='shops')
+router.register('shops', ShopViewSet, basename='shops')
+router.register('products', ProductModelViewset, basename='products')
 urlpatterns = [
-    path('hot_deals/', ProductShopApi.as_view(), name='hot_deals'),
+    # path('hot_deals/', HotDealsApi.as_view(), name='hot_deals'),
 ] + router.urls
