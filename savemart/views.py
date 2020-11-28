@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
-from rest_framework import views, viewsets, status
+from rest_framework import views, viewsets, status, generics, filters
 from django.contrib.gis.geos import fromstr
 from django.contrib.gis.geos import Point
 from django.contrib.gis.measure import Distance as D
@@ -23,7 +23,7 @@ from .serializers import (
 
 
 class ShopViewSet(viewsets.ViewSet):
-    permission_classes = (AllowAny, )
+    permission_classes = (AllowAny,)
 
     def retrieve(self, request, pk):
         query = Shop.objects.get(pk=pk)
@@ -70,7 +70,8 @@ class ProductModelViewset(viewsets.ModelViewSet):
 
 
 class HotDealsApi(views.APIView):
-    def get(self, request):
+
+    def get(self, request, *args, **kwargs):
         lat = request.GET.get('latitude')
         long = request.GET.get('longitude')
         if not (lat or long) or lat.isalpha() or long.isalpha():
@@ -78,15 +79,26 @@ class HotDealsApi(views.APIView):
         lat = float(lat)
         long = float(long)
         user_location = Point(long, lat)
-        # queryset = ProductShop.objects.filter(shop__location__distance_lt=(user_location, D(km=10)))\
-        #     .values('product')\
-        #     .annotate(distance=Distance('shop__location', user_location))
-        queryset = ProductShop.objects.filter(shop__location__distance_lt=(user_location, D(km=10)))\
-            .order_by().order_by('product', 'price').distinct('product')\
+        queryset = ProductShop.objects.filter(shop__location__distance_lt=(user_location, D(km=10))) \
+            .order_by().order_by('product', 'price').distinct('product') \
             .annotate(distance=Distance('shop__location', user_location))
         serializer = ProductShopSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+class SearchProductShopApi(generics.ListAPIView):
+    search_fields = ['product__name']
+    filter_backends = (filters.SearchFilter,)
+    serializer_class = ProductShopSerializer
 
-
+    def get_queryset(self):
+        lat = self.request.GET.get('latitude')
+        long = self.request.GET.get('longitude')
+        if not (lat or long) or lat.isalpha() or long.isalpha():
+            return ProductShop.objects.none()
+        lat = float(lat)
+        long = float(long)
+        user_location = Point(long, lat)
+        queryset = ProductShop.objects.filter(shop__location__distance_lt=(user_location, D(km=0.4))).order_by('price')\
+            .annotate(distance=Distance('shop__location', user_location))
+        return queryset
