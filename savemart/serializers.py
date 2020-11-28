@@ -20,6 +20,11 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class ProductShopSerializer(serializers.ModelSerializer):
+    product = serializers.StringRelatedField()
+    shop = serializers.StringRelatedField()
+    distance = serializers.CharField()
+
     class Meta:
         model = ProductShop
         fields = '__all__'
+
