@@ -1,10 +1,12 @@
 from django.shortcuts import render
 
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
-from rest_framework import viewsets
+from rest_framework import views, viewsets
 from django.contrib.gis.geos import fromstr
+from django.contrib.gis.geos import Point
+from django.contrib.gis.measure import Distance as D
+from django.contrib.gis.db.models.functions import Distance
 
 from .models import (
     Shop,
@@ -64,3 +66,19 @@ class ShopViewSet(viewsets.ViewSet):
 class ProductModelViewset(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+
+class HotDealsApi(views.APIView):
+    def get(self, request):
+        lat = request.GET.get('latitude')
+        long = request.GET.get('longitude')
+        if not (lat or long) or lat.isalpha() or long.isalpha():
+            return Response({"error": "invalid location coordinates"})
+        latitude = float(lat)
+        longitude = float(long)
+        user_location = Point(longitude, latitude)
+        queryset = ProductShop.objects.filter(shop__location__distance_lt=(user_location, D(km=0.3)))\
+            .annotate(distance=Distance('shop__location', user_location))
+        serializer = ProductShopSerializer(queryset, many=True)
+        return Response(serializer.data)
+

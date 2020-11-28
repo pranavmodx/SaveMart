@@ -2,9 +2,9 @@ from django.contrib import admin
 from django.contrib.gis.admin import OSMGeoAdmin
 
 from .models import (
-	Shop, 
-	Product, 
-	ProductShop,
+    Shop,
+    Product,
+    ProductShop,
 )
 
 
@@ -18,7 +18,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 class ProductShopAdmin(admin.ModelAdmin):
-    list_display = ('id',)
+    list_display = ('id', 'shop', 'product', 'price')
 
 
 admin.site.register(Product, ProductAdmin)
