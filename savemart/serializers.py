@@ -22,7 +22,7 @@ class ProductSerializer(serializers.ModelSerializer):
 class ProductShopSerializer(serializers.ModelSerializer):
     product = serializers.StringRelatedField()
     shop = serializers.StringRelatedField()
-    distance = serializers.CharField()
+    distance = serializers.CharField(required=False)
 
     class Meta:
         model = ProductShop
