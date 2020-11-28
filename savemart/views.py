@@ -102,15 +102,3 @@ class SearchProductShopApi(generics.ListAPIView):
             .annotate(distance=Distance('shop__location', user_location))
         return queryset
 
-    def get(self, request):
-        lat = request.GET.get('latitude')
-        long = request.GET.get('longitude')
-        if not (lat or long) or lat.isalpha() or long.isalpha():
-            return Response({"error": "invalid location coordinates"})
-        latitude = float(lat)
-        longitude = float(long)
-        user_location = Point(longitude, latitude)
-        queryset = ProductShop.objects.filter(shop__location__distance_lt=(user_location, D(km=0.3)))\
-            .annotate(distance=Distance('shop__location', user_location))
-        serializer = ProductShopSerializer(queryset, many=True)
-        return Response(serializer.data)
