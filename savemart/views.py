@@ -68,6 +68,13 @@ class ProductModelViewset(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
 
+    # def create(self, request, *args, **kwargs):
+    #     data = request.data
+    #     serializer = self.serializer_class(data=data, many=True)
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+    #     return Response(serializer.data)
+
 
 class HotDealsApi(views.APIView):
     def get(self, request, *args, **kwargs):
@@ -108,4 +115,11 @@ class SearchProductShopApi(generics.ListAPIView):
 class ProductShopApi(viewsets.ModelViewSet):
     queryset = ProductShop.objects.all()
     serializer_class = ProductShopSerializer
+
+    # def create(self, request, *args, **kwargs):
+    #     data = request.data
+    #     serializer = self.serializer_class(data=data, many=True)
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+    #     return Response(serializer.data)
 
