@@ -102,3 +102,10 @@ class SearchProductShopApi(generics.ListAPIView):
             .annotate(distance=Distance('shop__location', user_location))
         return queryset
 
+
+# Here, for create, shop and product must be ids
+# Once created, you can only update price, if you wanna change product or shop, delete and create
+class ProductShopApi(viewsets.ModelViewSet):
+    queryset = ProductShop.objects.all()
+    serializer_class = ProductShopSerializer
+
