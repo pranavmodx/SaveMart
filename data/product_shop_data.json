@@ -1,0 +1,297 @@
+[
+    {
+        "shop": 1,
+        "product": 5,
+        "price": 20
+    },
+    {
+        "shop": 1,
+        "product": 6,
+        "price": 25
+    },
+    {
+        "shop": 1,
+        "product": 7,
+        "price": 30
+    },
+    {
+        "shop": 1,
+        "product": 8,
+        "price": 25
+    },
+    {
+        "shop": 1,
+        "product": 9,
+        "price": 20
+    },
+    {
+        "shop": 1,
+        "product": 10,
+        "price": 50
+    },
+    {
+        "shop": 2,
+        "product": 11,
+        "price": 60
+    },
+    {
+        "shop": 2,
+        "product": 12,
+        "price": 35
+    },
+    {
+        "shop": 2,
+        "product": 13,
+        "price": 50
+    },
+    {
+        "shop": 2,
+        "product": 5,
+        "price": 45
+    },
+    {
+        "shop": 2,
+        "product": 6,
+        "price": 25
+    },
+    {
+        "shop": 2,
+        "product": 7,
+        "price": 20
+    },
+    {
+        "shop": 2,
+        "product": 8,
+        "price": 30
+    },
+    {
+        "shop": 2,
+        "product": 9,
+        "price": 35
+    },
+    {
+        "shop": 2,
+        "product": 22,
+        "price": 20
+    },
+    {
+        "shop": 2,
+        "product": 23,
+        "price": 20
+    },
+    {
+        "shop": 2,
+        "product": 10,
+        "price": 65
+    },
+    {
+        "shop": 3,
+        "product": 11,
+        "price": 55
+    },
+    {
+        "shop": 3,
+        "product": 12,
+        "price": 45
+    },
+    {
+        "shop": 3,
+        "product": 13,
+        "price": 55
+    },
+    {
+        "shop": 3,
+        "product": 14,
+        "price": 70
+    },
+    {
+        "shop": 3,
+        "product": 15,
+        "price": 20
+    },
+    {
+        "shop": 3,
+        "product": 16,
+        "price": 30
+    },
+    {
+        "shop": 3,
+        "product": 17,
+        "price": 50
+    },
+    {
+        "shop": 3,
+        "product": 18,
+        "price": 40
+    },
+    {
+        "shop": 3,
+        "product": 19,
+        "price": 25
+    },
+    {
+        "shop": 4,
+        "product": 20,
+        "price": 45
+    },
+    {
+        "shop": 4,
+        "product": 21,
+        "price": 35
+    },
+    {
+        "shop": 4,
+        "product": 10,
+        "price": 60
+    },
+    {
+        "shop": 4,
+        "product": 11,
+        "price": 70
+    },
+    {
+        "shop": 4,
+        "product": 12,
+        "price": 80
+    },
+    {
+        "shop": 5,
+        "product": 13,
+        "price": 100
+    },
+    {
+        "shop": 5,
+        "product": 5,
+        "price": 120
+    },
+    {
+        "shop": 5,
+        "product": 6,
+        "price": 30
+    },
+    {
+        "shop": 5,
+        "product": 7,
+        "price": 35
+    },
+    {
+        "shop": 5,
+        "product": 8,
+        "price": 60
+    },
+    {
+        "shop": 5,
+        "product": 14,
+        "price": 65
+    },
+    {
+        "shop": 6,
+        "product": 15,
+        "price": 45
+    },
+    {
+        "shop": 6,
+        "product": 16,
+        "price": 40
+    },
+    {
+        "shop": 6,
+        "product": 17,
+        "price": 35
+    },
+    {
+        "shop": 6,
+        "product": 18,
+        "price": 25
+    },
+    {
+        "shop": 6,
+        "product": 19,
+        "price": 60
+    },
+    {
+        "shop": 6,
+        "product": 20,
+        "price": 70
+    },
+    {
+        "shop": 6,
+        "product": 21,
+        "price": 50
+    },
+    {
+        "shop": 6,
+        "product": 1,
+        "price": 50
+    },
+    {
+        "shop": 7,
+        "product": 2,
+        "price": 45
+    },
+    {
+        "shop": 7,
+        "product": 3,
+        "price": 40
+    },
+    {
+        "shop": 7,
+        "product": 4,
+        "price": 30
+    },
+    {
+        "shop": 7,
+        "product": 5,
+        "price": 35
+    },
+    {
+        "shop": 7,
+        "product": 22,
+        "price": 40
+    },
+    {
+        "shop": 8,
+        "product": 6,
+        "price": 40
+    },
+    {
+        "shop": 8,
+        "product": 7,
+        "price": 25
+    },
+    {
+        "shop": 8,
+        "product": 23,
+        "price": 30
+    },
+    {
+        "shop": 9,
+        "product": 8,
+        "price": 70
+    },
+    {
+        "shop": 9,
+        "product": 9,
+        "price": 75
+    },
+    {
+        "shop": 9,
+        "product": 10,
+        "price": 55
+    },
+    {
+        "shop": 9,
+        "product": 1,
+        "price": 45
+    },
+    {
+        "shop": 9,
+        "product": 22,
+        "price": 30
+    },
+    {
+        "shop": 9,
+        "product": 23,
+        "price": 40
+    }
+]
