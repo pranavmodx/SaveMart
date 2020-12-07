@@ -21,6 +21,12 @@ class _DashboardState extends State<Dashboard> {
   int _selectedIndex = 0;
 
   @override
+  void initState() {
+    super.initState();
+    
+  }
+
+  @override
   Widget build(BuildContext context) {
     final _tabs = [
       storeTab(context),
