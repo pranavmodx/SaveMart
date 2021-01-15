@@ -85,7 +85,7 @@ class HotDealsApi(views.APIView):
         lat = float(lat)
         long = float(long)
         user_location = Point(long, lat)
-        queryset = ProductShop.objects.filter(shop__location__distance_lt=(user_location, D(km=10))) \
+        queryset = ProductShop.objects.filter(shop__location__distance_lt=(user_location, D(km=100))) \
             .order_by().order_by('product', 'price').distinct('product') \
             .annotate(distance=Distance('shop__location', user_location))
         serializer = ProductShopSerializer(queryset, many=True)

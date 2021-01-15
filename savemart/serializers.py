@@ -28,13 +28,15 @@ class ProductShopSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductShop
         fields = '__all__'
+    
 
     def create(self, validated_data):
         product_id = validated_data.get('product', None)
         shop_id = validated_data.get('shop', None)
         price = validated_data.get('price', None)
+        image = validated_data.get('image', None)
         if product_id and shop_id and price:
             product = Product.objects.get(pk=product_id)
             shop = Shop.objects.get(pk=shop_id)
-            instance = ProductShop.objects.create(product=product, shop=shop, price=price)
+            instance = ProductShop.objects.create(product=product, shop=shop, price=price, image=image)
             return instance
