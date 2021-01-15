@@ -44,7 +44,7 @@ class ShopViewSet(viewsets.ViewSet):
         serializer = ShopSerializer(data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def partial_update(self, request, pk):
         instance = Shop.objects.get(pk=pk)
@@ -56,7 +56,7 @@ class ShopViewSet(viewsets.ViewSet):
         serializer = ShopSerializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, request, pk):
         instance = Shop.objects.get(pk=pk)

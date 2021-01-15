@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import SearchProduct from "./SearchProduct";
+import AddProduct from "./AddProduct";
+import AddShop from "./AddShop";
+import AddProductShop from "./AddProductShop";
 
 import axios from "axios";
 
@@ -79,12 +82,16 @@ const HotDeals = () => {
     <div>
       <h1>Hot Deals</h1> 
       {hotDeals.map((item) => 
-        <> 
+        <>
           <h3>Product Name : {item.product}</h3>
+          <img src={item.image} alt={item.product} width="200" height="200"></img>
           <h3>Shop : {item.shop}</h3>
         </>
       ) }
       <SearchProduct />
+      <AddProduct />
+      <AddShop />
+      <AddProductShop />
     </div>
   );
 };
