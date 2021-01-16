@@ -10,7 +10,7 @@ import axios from "axios";
 
 const HotDeals = () => {
 	const [hotDeals, setHotDeals] = useState([]);
-	const [location, setLocation] = useState({});
+	const   [location, setLocation] = useState({});
 
 	const getLocation = () => {
 		navigator.geolocation.getCurrentPosition(function (position) {

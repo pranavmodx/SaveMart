@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ item }) => {
 	const { address, distance, id, image, price, product, shop } = item;
 	return (
 		<div className="col-lg-3">
-			<div class="card text-left border border-black">
+			<div className="card">
 				<img src={item.image} alt={item.product} width="100" height="100"></img>
-				<div class="card card-body row">
-					<p class="card-text">{product}</p>
-					<div class="list-group list-group-flush ">
-						<div className="row">{price}</div>
-						<div className="row">{shop}</div>
-						<div className="row">{distance}</div>
+				<div className="card card-body">
+					<div className="row">{product}</div>
+					<div className="row">{price}</div>
+					<div className="row">{shop}</div>
+					<div className="row">{distance}</div>
+					<Link to={`/product_shop/product/${id}`} className="btn btn-primary">
+						View
+					</Link>
 					</div>
-					<a href="#" class="btn btn-primary">
-						Go somewhere
-					</a>
-				</div>
 			</div>
 		</div>
 	);

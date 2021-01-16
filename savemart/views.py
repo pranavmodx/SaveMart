@@ -105,7 +105,7 @@ class SearchProductShopApi(generics.ListAPIView):
         lat = float(lat)
         long = float(long)
         user_location = Point(long, lat)
-        queryset = ProductShop.objects.filter(shop__location__distance_lt=(user_location, D(km=0.4))).order_by('price')\
+        queryset = ProductShop.objects.filter(shop__location__distance_lt=(user_location, D(km=1000))).order_by('price')\
             .annotate(distance=Distance('shop__location', user_location))
         return queryset
 
