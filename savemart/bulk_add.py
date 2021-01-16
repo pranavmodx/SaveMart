@@ -1,6 +1,6 @@
 import psycopg2
 import csv
-
+import backend.config
 
 db = psycopg2.connect(
     host='localhost',
@@ -10,6 +10,7 @@ db = psycopg2.connect(
     port=5432
 )
 cursor = db.cursor()
+
 
 def add_shop_data(file):
     with open(file, 'r') as f:
