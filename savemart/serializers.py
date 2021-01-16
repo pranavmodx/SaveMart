@@ -28,7 +28,6 @@ class ProductShopSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductShop
         fields = '__all__'
-    
 
     def create(self, validated_data):
         product_id = validated_data.get('product', None)
