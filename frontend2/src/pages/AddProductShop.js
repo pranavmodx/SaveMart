@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SelectSearch from "react-select-search";
 import "react-select-search/style.css";
 import axios from "axios";
+import AddProduct from "./AddProduct";
 
 const AddProductShop = () => {
 	const [shops, setShops] = useState([]);
@@ -9,6 +10,8 @@ const AddProductShop = () => {
 	const [product, setProduct] = useState([]);
 	const [shop, setShop] = useState("");
 	const [price, setPrice] = useState("");
+	const [showAddProduct, setShowAddProduct] = useState(false);
+
 	const handleAddProductShop = () => {
 		axios
 			.post("http://localhost:8000/product_shop/product/", {
@@ -20,18 +23,19 @@ const AddProductShop = () => {
 				console.log(res);
 			});
 	};
-
-	useEffect(() => {
+	const getProducts = () => {
 		axios.get("http://localhost:8000/shops/").then((res) => {
 			console.log(res.data);
 			setShops(res.data);
 		});
+	};
 
+	const getShops = () => {
 		axios.get("http://localhost:8000/products/").then((res) => {
 			console.log(res.data);
 			setProducts(res.data);
 		});
-	}, []);
+	};
 
 	const handleShopSearch = (value) => {
 		setShop(value);
@@ -47,8 +51,14 @@ const AddProductShop = () => {
 		setPrice(e.target.value);
 	};
 
+	useEffect(() => {
+		getProducts();
+		getShops();
+	}, []);
+
 	return (
 		<div className="container">
+			{showAddProduct && <AddProduct setShowAddProduct={setShowAddProduct} />}
 			<div
 				className="mainbox card col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2"
 				style={{ marginTop: "50px" }}
@@ -59,29 +69,44 @@ const AddProductShop = () => {
 					</div>
 					<div style={{ paddingTop: "30px" }} class="panel-body">
 						<div className="form-horizontal">
-							<div className="input-group" style={{ marginBottom: "25px" }}>
-								<SelectSearch
-									options={products.map(({ name, id }) => ({
-										value: id,
-										name: name,
-									}))}
-									search
-									placeholder="Select product"
-									onChange={(value) => handleProductSearch(value)}
-									printOptions={"on-focus"}
-								/>
+							<div className="form-inline" style={{ marginBottom: "25px" }}>
+								<div class="form-group">
+									<SelectSearch
+										options={products.map(({ name, id }) => ({
+											value: id,
+											name: name,
+										}))}
+										search
+										placeholder="Select product"
+										onChange={(value) => handleProductSearch(value)}
+										printOptions={"on-focus"}
+									/>
+								</div>
+
+								<button
+									className="btn btn-primary"
+									onClick={() => {
+										setShowAddProduct(true);
+									}}
+								>
+									+
+								</button>
 							</div>
-							<div className="input-group" style={{ marginBottom: "25px" }}>
-								<SelectSearch
-									options={shops.map(({ name, id }) => ({
-										value: id,
-										name: name,
-									}))}
-									search
-									placeholder="Select shop"
-									onChange={(value) => handleShopSearch(value)}
-									printOptions={"on-focus"}
-								/>
+
+							<div className="form-inline" style={{ marginBottom: "25px" }}>
+								<div class="form-group">
+									<SelectSearch
+										options={shops.map(({ name, id }) => ({
+											value: id,
+											name: name,
+										}))}
+										search
+										placeholder="Select shop"
+										onChange={(value) => handleShopSearch(value)}
+										printOptions={"on-focus"}
+									/>
+								</div>
+								<button className="btn btn-primary ">+</button>
 							</div>
 							<div className="input-group" style={{ marginBottom: "25px" }}>
 								<input
@@ -94,7 +119,7 @@ const AddProductShop = () => {
 								/>
 							</div>
 							<div
-								className="input-group"
+								className="form-group"
 								style={{ marginBottom: "25px", alignContent: "end" }}
 							>
 								<button
