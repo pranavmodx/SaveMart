@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import SearchProduct from "./SearchProduct";
 import AddProduct from "./AddProduct";
 import AddShop from "./AddShop";
@@ -10,7 +10,7 @@ import axios from "axios";
 
 const HotDeals = () => {
 	const [hotDeals, setHotDeals] = useState([]);
-	const   [location, setLocation] = useState({});
+	const [location, setLocation] = useState({});
 
 	const getLocation = () => {
 		navigator.geolocation.getCurrentPosition(function (position) {
@@ -100,6 +100,9 @@ const HotDeals = () => {
 	return (
 		<div className="container">
 			<h1>Hot Deals</h1>
+			<Link to="/products" className="btn btn-primary">
+				Add item
+			</Link>
 
 			{hotDealRowItems.map((rowItem) => (
 				<div className="row">
@@ -112,7 +115,6 @@ const HotDeals = () => {
 			<SearchProduct />
 			<AddProduct />
 			<AddShop />
-			<AddProductShop />
 		</div>
 	);
 };
