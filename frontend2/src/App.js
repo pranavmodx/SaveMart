@@ -16,7 +16,11 @@ const App = () => {
 				<Switch>
 					<Route exact path="/" component={HotDeals} />
 					<Route exact path="/search_product_shop" component={SearchPage} />
-					<Route exact path="/products" component={AddProductShop} />
+					<Route
+						exact
+						path="/products_shop/product"
+						component={AddProductShop}
+					/>
 					<Route
 						path="/product_shop/product/:productId"
 						component={DetailedProductShop}

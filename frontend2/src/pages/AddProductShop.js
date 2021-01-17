@@ -49,30 +49,65 @@ const AddProductShop = () => {
 
 	return (
 		<div className="container">
-			<SelectSearch
-				options={products.map(({ name, id }) => ({ value: id, name: name }))}
-				search
-				placeholder="Select product"
-				onChange={(value) => handleProductSearch(value)}
-				printOptions={"on-focus"}
-			/>
-
-			<SelectSearch
-				options={shops.map(({ name, id }) => ({ value: id, name: name }))}
-				search
-				placeholder="Select shop"
-				onChange={(value) => handleShopSearch(value)}
-				printOptions={"on-focus"}
-			/>
-
-			<input
-				name="price"
-				type="text"
-				placeholder="Enter price"
-				value={price}
-				onChange={(e) => handlePriceChange(e)}
-			/>
-			<button onClick={handleAddProductShop}>Add item</button>
+			<div
+				className="mainbox card col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2"
+				style={{ marginTop: "50px" }}
+			>
+				<div class="panel">
+					<div class="panel-heading" style={{ marginTop: "25px" }}>
+						<div class="panel-title">Add an item to a shop</div>
+					</div>
+					<div style={{ paddingTop: "30px" }} class="panel-body">
+						<div className="form-horizontal">
+							<div className="input-group" style={{ marginBottom: "25px" }}>
+								<SelectSearch
+									options={products.map(({ name, id }) => ({
+										value: id,
+										name: name,
+									}))}
+									search
+									placeholder="Select product"
+									onChange={(value) => handleProductSearch(value)}
+									printOptions={"on-focus"}
+								/>
+							</div>
+							<div className="input-group" style={{ marginBottom: "25px" }}>
+								<SelectSearch
+									options={shops.map(({ name, id }) => ({
+										value: id,
+										name: name,
+									}))}
+									search
+									placeholder="Select shop"
+									onChange={(value) => handleShopSearch(value)}
+									printOptions={"on-focus"}
+								/>
+							</div>
+							<div className="input-group" style={{ marginBottom: "25px" }}>
+								<input
+									name="price"
+									className="form-control"
+									type="text"
+									placeholder="Enter price"
+									value={price}
+									onChange={(e) => handlePriceChange(e)}
+								/>
+							</div>
+							<div
+								className="input-group"
+								style={{ marginBottom: "25px", alignContent: "end" }}
+							>
+								<button
+									onClick={handleAddProductShop}
+									className="btn btn-primary mb-2"
+								>
+									Add item
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
