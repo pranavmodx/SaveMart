@@ -132,7 +132,7 @@ const AddProductShop = () => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>		
 		</div>
 	);
 };
