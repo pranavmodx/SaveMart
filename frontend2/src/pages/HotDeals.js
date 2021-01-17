@@ -100,7 +100,7 @@ const HotDeals = () => {
 	return (
 		<div className="container">
 			<h1>Hot Deals</h1>
-			<Link to="/products" className="btn btn-primary">
+			<Link to="/products_shop/product" className="btn btn-primary">
 				Add item
 			</Link>
 
