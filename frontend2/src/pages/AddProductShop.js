@@ -67,7 +67,13 @@ const AddProductShop = () => {
 					products={products}
 				/>
 			)}
-			{showAddShop && <AddShop setShowAddShop={setShowAddShop} />}
+			{showAddShop && (
+				<AddShop
+					setShowAddShop={setShowAddShop}
+					shops={shops}
+					setShops={setShops}
+				/>
+			)}
 			<div
 				className="mainbox card col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2"
 				style={{ marginTop: "50px" }}
