@@ -113,8 +113,6 @@ const HotDeals = () => {
 			))}
 
 			<SearchProduct />
-			<AddProduct />
-			<AddShop />
 		</div>
 	);
 };
