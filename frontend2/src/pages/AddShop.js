@@ -3,37 +3,18 @@ import SelectSearch from "react-select-search";
 import "react-select-search/style.css";
 import axios from "axios";
 
-const AddShop = ({ setShowAddShop }) => {
+const AddShop = ({ setShowAddShop, shops, setShops }) => {
 	const handleAddShop = () => {
-		axios
-			.post("http://localhost:8000/shops/", {
-				name: "Test Shop",
-				address: "Test address, Near Test address, Ernakulam",
-				longitude: "76.34608299999999",
-				latitude: "9.944607",
-				owner: "Test owner",
-				phone_no: "9876543210",
-			})
-			.then((res) => {
-				console.log(res);
-			});
+		console.log(shop);
+		axios.post("http://localhost:8000/shops/", shop).then((res) => {
+			console.log(res);
+			setShops([...shops, res.data]);
+			setShowAddShop(false);
+		});
 	};
 
-	const [address, setAdress] = useState("");
 	const [options, setOptions] = useState([]);
 	const [shop, setShop] = useState({});
-	const onChange = (e) => {
-		const address = e.target.value;
-		setAdress(address);
-		axios
-			.get(
-				`https://api.locationiq.com/v1/autocomplete.php?key=pk.97cbc82fbfaf4fd20df52e556c03bb1e&q=${address}`
-			)
-			.then((res) => {
-				console.log(res);
-				setOptions(res.data);
-			});
-	};
 
 	return (
 		<div
