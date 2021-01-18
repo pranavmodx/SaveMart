@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import axios from "axios";
 
-const AddProduct = ({ setShowAddProduct }) => {
+const AddProduct = ({ setShowAddProduct, setProducts, products }) => {
 	const handleAddProduct = (e) => {
 		e.preventDefault();
 		axios
@@ -12,6 +12,8 @@ const AddProduct = ({ setShowAddProduct }) => {
 			.then((res) => {
 				console.log(res);
 				setShowAddProduct(false);
+				const data = res.data;
+				setProducts([...products, data]);
 			});
 	};
 
