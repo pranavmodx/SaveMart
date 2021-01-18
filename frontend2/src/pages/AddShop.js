@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import SelectSearch from "react-select-search";
+import "react-select-search/style.css";
 import axios from "axios";
 
 const AddShop = ({ setShowAddShop }) => {
@@ -20,6 +21,7 @@ const AddShop = ({ setShowAddShop }) => {
 
 	const [address, setAdress] = useState("");
 	const [options, setOptions] = useState([]);
+	const [shop, setShop] = useState({});
 	const onChange = (e) => {
 		const address = e.target.value;
 		setAdress(address);
@@ -62,13 +64,54 @@ const AddShop = ({ setShowAddShop }) => {
 							<label for="name" class="form-label">
 								Shop Address
 							</label>
-							<input
-								name="address"
-								type="text"
-								placeholder="enter shop address"
-								className="form-control"
-								value={address}
-								onChange={(e) => onChange(e)}
+
+							<SelectSearch
+								options={options.map(({ name, value }) => ({
+									value: value,
+									name: name,
+								}))}
+								getOptions={(query) => {
+									return new Promise((resolve, reject) => {
+										fetch(
+											`https://api.locationiq.com/v1/autocomplete.php?key=pk.97cbc82fbfaf4fd20df52e556c03bb1e&q=${query}`
+										)
+											.then((response) => response.json())
+											.then((res) => {
+												const op = res.map(
+													(
+														{
+															address: { name, city, road, state, country },
+															lat,
+															lon,
+														},
+														id
+													) => ({
+														value: {
+															latitude: lat,
+															longitude: lon,
+															name: name,
+															address: `${name},${city},${road},${state},${country}`,
+														},
+														name: `${name},${city},${road},${state},${country}`,
+													})
+												);
+												setOptions(op);
+												resolve(op);
+											})
+											.catch(reject);
+									});
+								}}
+								onChange={({ latitude, longitude, name, address }) =>
+									setShop({
+										name: name,
+										address: address,
+										latitude: latitude,
+										longitude: longitude,
+									})
+								}
+								search
+								placeholder="search shop address"
+								printOptions={"on-focus"}
 							/>
 						</div>
 					</div>
