@@ -3,6 +3,7 @@ import SelectSearch from "react-select-search";
 import "react-select-search/style.css";
 import axios from "axios";
 import AddProduct from "./AddProduct";
+import AddShop from "./AddShop";
 
 const AddProductShop = () => {
 	const [shops, setShops] = useState([]);
@@ -11,6 +12,7 @@ const AddProductShop = () => {
 	const [shop, setShop] = useState("");
 	const [price, setPrice] = useState("");
 	const [showAddProduct, setShowAddProduct] = useState(false);
+	const [showAddShop, setShowAddShop] = useState(false);
 
 	const handleAddProductShop = () => {
 		axios
@@ -58,7 +60,14 @@ const AddProductShop = () => {
 
 	return (
 		<div className="container">
-			{showAddProduct && <AddProduct setShowAddProduct={setShowAddProduct} />}
+			{showAddProduct && (
+				<AddProduct
+					setShowAddProduct={setShowAddProduct}
+					setProducts={setProducts}
+					products={products}
+				/>
+			)}
+			{showAddShop && <AddShop setShowAddShop={setShowAddShop} />}
 			<div
 				className="mainbox card col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2"
 				style={{ marginTop: "50px" }}
@@ -106,7 +115,14 @@ const AddProductShop = () => {
 										printOptions={"on-focus"}
 									/>
 								</div>
-								<button className="btn btn-primary ">+</button>
+								<button
+									className="btn btn-primary"
+									onClick={() => {
+										setShowAddShop(true);
+									}}
+								>
+									+
+								</button>
 							</div>
 							<div className="input-group" style={{ marginBottom: "25px" }}>
 								<input
@@ -132,7 +148,7 @@ const AddProductShop = () => {
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>
 		</div>
 	);
 };
