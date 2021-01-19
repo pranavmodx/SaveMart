@@ -39,3 +39,7 @@ class ProductShopSerializer(serializers.ModelSerializer):
             shop = Shop.objects.get(pk=shop_id)
             instance = ProductShop.objects.create(product=product, shop=shop, price=price, image=image)
             return instance
+
+
+
+

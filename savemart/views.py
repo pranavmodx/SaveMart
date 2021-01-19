@@ -114,7 +114,9 @@ class SearchProductShopApi(generics.ListAPIView):
 # Once created, you can only update price, if you wanna change product or shop, delete and create
 class ProductShopApi(viewsets.ModelViewSet):
     queryset = ProductShop.objects.all()
+    search_fields = ['shop__id']
     serializer_class = ProductShopSerializer
+    filter_backends = (filters.SearchFilter,)
 
     # def create(self, request, *args, **kwargs):
     #     data = request.data
@@ -122,4 +124,7 @@ class ProductShopApi(viewsets.ModelViewSet):
     #     serializer.is_valid(raise_exception=True)
     #     serializer.save()
     #     return Response(serializer.data)
+
+
+
 
