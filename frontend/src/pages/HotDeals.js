@@ -9,115 +9,114 @@ import ProductCard from "./ProductCard";
 import axios from "axios";
 
 const HotDeals = () => {
-	const [hotDeals, setHotDeals] = useState([]);
-	const [location, setLocation] = useState({});
+  const [hotDeals, setHotDeals] = useState([]);
+  const [location, setLocation] = useState({});
 
-	const getLocation = () => {
-		navigator.geolocation.getCurrentPosition(function (position) {
-			setLocation({
-				latitude: position.coords.latitude,
-				longitude: position.coords.longitude,
-			});
-		});
-	};
+  const getLocation = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setLocation({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+    });
+  };
 
-	const getHotDeals = (latitude, longitude) => {
-		axios
-			.get(
-				`http://localhost:8000/hot_deals/?latitude=${latitude}&longitude=${longitude}&search=1`
-			)
-			.then((res) => {
-				console.log(res.data);
-				setHotDeals(res.data);
-			});
-	};
+  const getHotDeals = (latitude, longitude) => {
+    axios
+      .get(
+        `http://localhost:8000/hot_deals/?latitude=${latitude}&longitude=${longitude}&search=1`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setHotDeals(res.data);
+      });
+  };
 
-	const searchProduct = (item) => {
-		const { latitude, longitude } = location;
+  const searchProduct = (item) => {
+    const { latitude, longitude } = location;
 
-		axios
-			.get(
-				`http://localhost:8000/product_shop/?latitude=${latitude}&longitude=${longitude}&search=${item}`
-			)
-			.then((res) => {
-				console.log(res.data);
-				// setShops(res.data);
-			});
-	};
+    axios
+      .get(
+        `http://localhost:8000/product_shop/?latitude=${latitude}&longitude=${longitude}&search=${item}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        // setShops(res.data);
+      });
+  };
 
-	const getShops = () => {
-		axios.get("http://localhost:8000/shops").then((res) => {
-			console.log(res.data);
-			// setShops(res.data);
-		});
-	};
+  const getShops = () => {
+    axios.get("http://localhost:8000/shops").then((res) => {
+      console.log(res.data);
+      // setShops(res.data);
+    });
+  };
 
-	const getProducts = () => {
-		axios.get("http://localhost:8000/products").then((res) => {
-			console.log(res.data);
-			// setShops(res.data);
-		});
-	};
+  const getProducts = () => {
+    axios.get("http://localhost:8000/products").then((res) => {
+      console.log(res.data);
+      // setShops(res.data);
+    });
+  };
 
-	const toRowsandCols = (data, cols) => {
-		var table = [],
-			i,
-			k;
+  const toRowsandCols = (data, cols) => {
+    var table = [],
+      i,
+      k;
 
-		for (i = 0, k = -1; i < data.length; i++) {
-			if (i % cols === 0) {
-				k++;
-				table[k] = [];
-			}
+    for (i = 0, k = -1; i < data.length; i++) {
+      if (i % cols === 0) {
+        k++;
+        table[k] = [];
+      }
 
-			table[k].push(data[i]);
-		}
-		console.log(table);
-		return table;
-	};
+      table[k].push(data[i]);
+    }
+    console.log(table);
+    return table;
+  };
 
-	const getLocationAndHotDeals = () => {
-		navigator.geolocation.getCurrentPosition(function (position) {
-			const latitude = position.coords.latitude;
-			const longitude = position.coords.longitude;
+  const getLocationAndHotDeals = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
-			setLocation({
-				latitude,
-				longitude,
-			});
+      setLocation({
+        latitude,
+        longitude,
+      });
 
-			console.log(latitude, longitude);
+      console.log(latitude, longitude);
 
-			getHotDeals(latitude, longitude);
-		});
-	};
+      getHotDeals(latitude, longitude);
+    });
+  };
 
-	useEffect(() => {
-		getLocationAndHotDeals();
-	}, []);
+  useEffect(() => {
+    getLocationAndHotDeals();
+  }, []);
 
-	const hotDealRowItems = toRowsandCols(hotDeals, 4);
-	return (
-		<div className="container">
-			<h1>Hot Deals</h1>
-			<Link to="/products_shop/product" className="btn btn-primary">
-				Add item
-			</Link>
-			<Link to="/shops/all" className="btn btn-primary">
-				Shops
-			</Link>
-
-			{hotDealRowItems.map((rowItem) => (
-				<div className="row">
-					{rowItem.map((colItem) => (
-						<ProductCard item={colItem} />
-					))}
-				</div>
-			))}
-
-			<SearchProduct />
-		</div>
-	);
+  const hotDealRowItems = toRowsandCols(hotDeals, 4);
+  return (
+    <div className="container">
+      <br></br>
+      <SearchProduct />
+      <br></br>
+      <br></br>
+			<hr></hr>
+      <h1>
+        <span style={{ color: "red" }}>Hot</span> Deals
+      </h1>
+      <br></br>
+      {hotDealRowItems.map((rowItem) => (
+        <div className="row">
+          {rowItem.map((colItem) => (
+            <ProductCard item={colItem} />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default HotDeals;

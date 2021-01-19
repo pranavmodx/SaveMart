@@ -22,15 +22,28 @@ const SearchProduct = () => {
   };
 
   return (
-    <div>
+    <div
+      class="form-group"
+      style={{
+        width: "45%",
+        marginBottom: "10px",
+        display: "flex",
+        flexDirection: "row",
+        margin: "auto",
+      }}
+    >
       <input
-        name="text"
         type="text"
-        placeholder="Search"
+        class="form-control"
+        placeholder="Enter product name"
         value={searchInput}
         onChange={(e) => handleSearchInput(e)}
+        style={{ marginRight: "20px" }}
       />
-      <button onClick={onSearch}>Search</button>
+      <button onClick={onSearch} className="btn btn-primary">
+        <i class="fa fa-search fa-lg" aria-hidden="true"></i> &nbsp;
+        Search
+      </button>
     </div>
   );
 };
