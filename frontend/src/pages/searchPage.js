@@ -13,8 +13,7 @@ const SearchPage = (props) => {
   console.log(props.location.state.searchInput);
 
   useEffect(() => {
-    if (searchInput !== "")
-      getProducts();
+    if (searchInput !== "") getProducts();
   }, []);
 
   const handleSearchInput = (e) => {
@@ -51,15 +50,36 @@ const SearchPage = (props) => {
   const productShops = toRowsandCols(products, 4);
 
   return (
-    <div>
-      <input
-        name="text"
-        type="text"
-        placeholder="Search"
-        value={searchInput}
-        onChange={(e) => handleSearchInput(e)}
-      />
-      <button onClick={getProducts}>Search</button>
+    <div className="container">
+      <br></br>
+      <div
+        class="form-group"
+        style={{
+          width: "45%",
+          marginBottom: "10px",
+          display: "flex",
+          flexDirection: "row",
+          margin: "auto",
+        }}
+      >
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter product name"
+          value={searchInput}
+          onChange={(e) => handleSearchInput(e)}
+          style={{ marginRight: "20px" }}
+        />
+        <button onClick={getProducts} className="btn btn-primary">
+          <i class="fa fa-search fa-lg" aria-hidden="true"></i> &nbsp; Search
+        </button>
+      </div>
+
+      <br></br>
+      <br></br>
+      <hr></hr>
+      <br></br>
+
       {products.length !== 0 &&
         productShops.map((rowItem) => (
           <div className="row">

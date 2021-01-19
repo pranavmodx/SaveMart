@@ -9,17 +9,17 @@ const ProductCard = ({ item }) => {
         <img src={image} alt={product} width="200" height="200"></img>
         <div className="card card-body" style={{textAlign: "left", paddingLeft: "30px"}}>
 					<br></br>
-          <div className="row">
-            <h5>Product : {product}</h5>
+          <div className="row" style={{marginBottom: "10px"}}>
+            <h5><strong>Product</strong> : {product}</h5>
           </div>
           <div className="row">
-            <h6>Price : Rs. {price}</h6>
+            <h6><strong>Price</strong> : Rs. {price}</h6>
           </div>
           <div className="row">
-            <h6>Shop : {shop}</h6>
+            <h6><strong>Shop</strong> : {shop}</h6>
           </div>
           <div className="row">
-            <h6>Distance : {distance}</h6>
+            <h6><strong>Distance</strong> : {distance}</h6>
           </div>
 					<br></br>
           <Link to={`/product_shop/product/${id}`} className="btn btn-primary" style={{marginBottom: "30px", marginLeft: "35px"}}>

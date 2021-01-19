@@ -100,6 +100,7 @@ const HotDeals = () => {
   return (
     <div className="container">
       <br></br>
+      <br></br>
       <SearchProduct />
       <br></br>
       <br></br>
