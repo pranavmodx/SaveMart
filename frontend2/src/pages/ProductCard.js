@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ item }) => {
 	const { address, distance, id, image, price, product, shop } = item;
@@ -15,7 +15,7 @@ const ProductCard = ({ item }) => {
 					<Link to={`/product_shop/product/${id}`} className="btn btn-primary">
 						View
 					</Link>
-					</div>
+				</div>
 			</div>
 		</div>
 	);

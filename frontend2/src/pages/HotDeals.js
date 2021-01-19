@@ -24,7 +24,7 @@ const HotDeals = () => {
 	const getHotDeals = (latitude, longitude) => {
 		axios
 			.get(
-				`http://localhost:8000/hot_deals/?latitude=${latitude}&longitude=${longitude}`
+				`http://localhost:8000/hot_deals/?latitude=${latitude}&longitude=${longitude}&search=1`
 			)
 			.then((res) => {
 				console.log(res.data);
@@ -102,6 +102,9 @@ const HotDeals = () => {
 			<h1>Hot Deals</h1>
 			<Link to="/products_shop/product" className="btn btn-primary">
 				Add item
+			</Link>
+			<Link to="/shops/all" className="btn btn-primary">
+				Shops
 			</Link>
 
 			{hotDealRowItems.map((rowItem) => (
