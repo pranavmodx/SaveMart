@@ -3,46 +3,51 @@ import axios from "axios";
 import ProductCard from "./ProductCard";
 
 const ProductsInShop = (props) => {
-	const [products, setProducts] = useState([]);
-	const toRowsandCols = (data, cols) => {
-		var table = [],
-			i,
-			k;
+	const id = props.match.url.split("/")[2];
 
-		for (i = 0, k = -1; i < data.length; i++) {
-			if (i % cols === 0) {
-				k++;
-				table[k] = [];
-			}
+  const [products, setProducts] = useState([]);
+  const toRowsandCols = (data, cols) => {
+    var table = [],
+      i,
+      k;
 
-			table[k].push(data[i]);
-		}
-		console.log(table);
-		return table;
-	};
+    for (i = 0, k = -1; i < data.length; i++) {
+      if (i % cols === 0) {
+        k++;
+        table[k] = [];
+      }
 
-	useEffect(() => {
-		const id = props.match.url.split("/")[2];
-		axios
-			.get(`http://localhost:8000/product_shop/product/?search=${id}`)
-			.then((res) => {
-				console.log(res.data);
-				setProducts(res.data);
-			});
-	}, []);
+      table[k].push(data[i]);
+    }
+    console.log(table);
+    return table;
+  };
 
-	const productsRowItems = toRowsandCols(products, 4);
-	return (
-		<div className="container">
-			{productsRowItems.map((rowItem) => (
-				<div className="row">
-					{rowItem.map((colItem) => (
-						<ProductCard item={colItem} />
-					))}
-				</div>
-			))}
-		</div>
-	);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/product_shop/product/?search=${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setProducts(res.data);
+      });
+  }, []);
+
+  const productsRowItems = toRowsandCols(products, 4);
+  return (
+    <div className="container">
+      <br></br>
+      <h3>Products in Shop {id}</h3>
+      <hr></hr>
+      <br></br>
+      {productsRowItems.map((rowItem) => (
+        <div className="row">
+          {rowItem.map((colItem) => (
+            <ProductCard item={colItem} />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default ProductsInShop;
