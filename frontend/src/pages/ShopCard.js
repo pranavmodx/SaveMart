@@ -36,12 +36,12 @@ const ShopCard = ({ shopId }) => {
           </div>
           <div className="row">
             <h6>
-              <strong>Owner:</strong> {owner}
+              <strong>Owner:</strong> Mr. Vasudevan Nair
             </h6>
           </div>
           <div className="row">
             <h6>
-              <strong>Phone No:</strong> {phone_no}
+              <strong>Phone No:</strong> +91 8393593455
             </h6>
           </div>
         </div>

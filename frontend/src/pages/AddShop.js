@@ -61,7 +61,7 @@ const AddShop = ({ setShowAddShop, shops, setShops }) => {
 												const op = res.map(
 													(
 														{
-															address: { name, city, road, state, country },
+															address: { name, city, state },
 															lat,
 															lon,
 														},
@@ -71,9 +71,9 @@ const AddShop = ({ setShowAddShop, shops, setShops }) => {
 															latitude: lat,
 															longitude: lon,
 															name: name,
-															address: `${name},${city},${road},${state},${country}`,
+															address: `${name},${city},${state}`,
 														},
-														name: `${name},${city},${road},${state},${country}`,
+														name: `${name},${city},${state}`,
 													})
 												);
 												setOptions(op);

@@ -28,7 +28,7 @@ const Shops = () => {
         <div class="panel">
           <div class="panel-heading" style={{ marginTop: "25px" }}>
             <div class="panel-title">
-              <h4>View Shops</h4>
+              <h4>Search Shops</h4>
             </div>
           </div>
           <hr></hr>

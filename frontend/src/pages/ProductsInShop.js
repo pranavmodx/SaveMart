@@ -36,13 +36,13 @@ const ProductsInShop = (props) => {
   return (
     <div className="container">
       <br></br>
-      <h3>Products in Shop {id}</h3>
+      <h3>Products in <strong>Kammath Vegetables</strong></h3>
       <hr></hr>
       <br></br>
       {productsRowItems.map((rowItem) => (
         <div className="row">
           {rowItem.map((colItem) => (
-            <ProductCard item={colItem} />
+            <ProductCard item={colItem} showDist={false} />
           ))}
         </div>
       ))}

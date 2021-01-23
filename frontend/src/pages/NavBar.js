@@ -22,7 +22,7 @@ const NavBar = () => {
         </li>
         <li>
           <Link to="/shops/all" className="btn btn-primary">
-            View Shops
+            Search Shops
           </Link>
         </li>
       </ul>

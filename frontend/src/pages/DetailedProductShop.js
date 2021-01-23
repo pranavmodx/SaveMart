@@ -139,8 +139,10 @@ const DetailedProductShop = ({ match }) => {
         </div>
         {enablePriceInput && (
           <>
-            <button onClick={saveUpdate}>Save</button>
-            <button onClick={cancelUpdate}>Cancel</button>
+            <button className="btn btn-primary" 
+              onClick={saveUpdate} style={{marginRight: "20px"}}>Save</button>
+            <button className="btn btn-danger" 
+             onClick={cancelUpdate}>Cancel</button>
           </>
         )}
       </div>
